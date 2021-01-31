@@ -1,0 +1,16 @@
+type Publication @collection(name: "publications") {
+  name: String!
+  url: String!
+}
+
+type PublicationQuery @collection(name: "publication-queries") {
+  publication: Publication!
+  description: String!
+  name: String!
+  url: String!
+}
+
+type Query {
+  allPublications: [Publication!]
+  allPublicationQueries: [PublicationQuery!]
+}
