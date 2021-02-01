@@ -3,7 +3,7 @@ import FaunaDB from 'faunadb';
 exports.handler = (event, context) => {
   console.log('Function `all-publications` invoked');
   let client = new FaunaDB.Client({
-    secret: process.env.FAUNADB_SERVER_SECRET,
+    secret: process.env.FAUNA_DB_KEY,
   });
 
   return client
