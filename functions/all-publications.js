@@ -1,4 +1,5 @@
 const FaunaDB = require('faunadb');
+const q = FaunaDB.query;
 
 exports.handler = (event, context) => {
   console.log('Function `all-publications` invoked');
@@ -11,12 +12,11 @@ exports.handler = (event, context) => {
     .then((response) => {
       let { data: publicationRefs } = response;
       let getAllPublications = publicationRefs.map((ref) => {
-        return FaunaDB.query.Get(ref);
+        return q.Get(ref);
       });
 
       return client.query(getAllPublications).then((res) => {
-        console.log('Success::');
-        console.log(JSON.stringify(res));
+        console.log('Success::', JSON.stringify(res));
         return {
           statusCode: 200,
           body: JSON.stringify(res),
