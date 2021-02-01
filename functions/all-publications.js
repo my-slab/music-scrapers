@@ -1,4 +1,4 @@
-import FaunaDB from 'faunadb';
+const FaunaDB = require('faunadb');
 
 exports.handler = (event, context) => {
   console.log('Function `all-publications` invoked');
@@ -15,6 +15,8 @@ exports.handler = (event, context) => {
       });
 
       return client.query(getAllPublications).then((res) => {
+        console.log('Success::');
+        console.log(JSON.stringify(res));
         return {
           statusCode: 200,
           body: JSON.stringify(res),
@@ -22,7 +24,7 @@ exports.handler = (event, context) => {
       });
     })
     .catch((error) => {
-      console.log('error', error);
+      console.log('Failure::', error);
       return {
         statusCode: 400,
         body: JSON.stringify(error),
