@@ -1,0 +1,12 @@
+{
+  "name": "music",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": "true",
+  "repository": "git@github.com:my-slab/music.git",
+  "author": "my-slab <mitch.stewart@hey.com>",
+  "license": "MIT",
+  "dependencies": {
+    "faunadb": "^4.0.2"
+  }
+}
