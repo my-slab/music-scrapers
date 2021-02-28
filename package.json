@@ -5,8 +5,39 @@
   "private": "true",
   "repository": "git@github.com:my-slab/music.git",
   "author": "my-slab <mitch.stewart@hey.com>",
-  "license": "MIT",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "npm run build:types && npm run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
+    "start": "npm run build && node lib",
+    "fetch": "npm run build && node lib/pitchfork.js",
+    "read": "npm run build && node lib/read-file.js"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/my-slab/music/issues"
+  },
+  "homepage": "https://github.com/my-slab/music#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
+    "@types/lodash": "^4.14.168",
+    "@types/node-fetch": "^2.5.8",
+    "@types/puppeteer": "^5.4.2",
+    "@types/spotify-api": "0.0.6",
+    "typescript": "^4.1.3"
+  },
   "dependencies": {
-    "faunadb": "^4.0.2"
+    "faunadb": "^4.0.2",
+    "isomorphic-unfetch": "^3.1.0",
+    "lodash": "^4.17.20",
+    "puppeteer": "^5.5.0"
   }
 }
