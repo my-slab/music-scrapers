@@ -1,0 +1,35 @@
+name: README build
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '* */12 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [15.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - name: Scrape data
+        run: npm run start --if-present\
+      - name: Push data
+        uses: github-actions-x/commit@v2.7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: main
+          name: my-slab
+          email: mitch.stewart@hey.com
+          commit-message: 'chore: Build data'
+          rebase: 'true'
