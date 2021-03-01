@@ -1,7 +1,5 @@
-import { bestNewMusic } from './publications/pitchfork/best-new-music';
-import { albumOfTheWeek } from './publications/stereogum/album-of-the-week';
+import * as publications from './publications';
 import { PublicationQuery } from './types';
-
 import { goto, launch, teardown } from './utils';
 
 async function task(publicationQuery: PublicationQuery) {
@@ -13,5 +11,12 @@ async function task(publicationQuery: PublicationQuery) {
 }
 
 (async () => {
-  await Promise.all([task(bestNewMusic), task(albumOfTheWeek)]);
+  let p: keyof typeof publications;
+  for (p in publications) {
+    let publication = publications[p];
+    for (let pq in publication) {
+      let publicationQuery = (<any>publication)[pq];
+      await task(publicationQuery);
+    }
+  }
 })();

@@ -6,7 +6,6 @@ import { Album, PublicationQuery } from '../../types';
 import { read, write } from '../../utils';
 
 const URL = 'https://www.stereogum.com/category/reviews/album-of-the-week/';
-const PATH = './data/stereogum/album-of-the-week/albums.json';
 
 async function scrape(page: Page): Promise<Album[]> {
   return page.evaluate((e) => {
@@ -32,6 +31,7 @@ async function scrape(page: Page): Promise<Album[]> {
 }
 
 async function save(albums: Album[]) {
+  const PATH = './data/stereogum/album-of-the-week/albums.json';
   let data = read(PATH);
   data = JSON.stringify(uniqWith([...data, ...albums], isEqual));
   write(PATH, data);

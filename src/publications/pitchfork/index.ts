@@ -1,1 +1,5 @@
-export * from './best-new-music';
+import { bestNewMusic } from './best-new-music';
+
+export let pitchfork = {
+  bestNewMusic,
+};
