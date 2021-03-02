@@ -27,6 +27,7 @@ async function scrape(page: Page): Promise<Album[]> {
 
 async function save(albums: Album[]) {
   const PATH = './data/stereogum/heavy-rotation/albums.json';
+
   let data = read(PATH);
   data = JSON.stringify(uniqWith([...data, ...albums], isEqual));
   write(PATH, data);

@@ -6,7 +6,6 @@ import { Album, PublicationQuery } from '../../types';
 import { read, write } from '../../utils';
 
 const URL = 'https://pitchfork.com/reviews/best/albums';
-const PATH = './data/pitchfork/best-new-music/albums.json';
 
 async function scrape(page: Page): Promise<Album[]> {
   return page.evaluate((e) => {
@@ -30,6 +29,8 @@ async function scrape(page: Page): Promise<Album[]> {
 }
 
 async function save(albums: Album[]) {
+  const PATH = './data/pitchfork/best-new-music/albums.json';
+
   let data = read(PATH);
   data = JSON.stringify(uniqWith([...data, ...albums], isEqual));
   write(PATH, data);
