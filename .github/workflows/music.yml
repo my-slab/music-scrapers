@@ -21,9 +21,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - name: Scrape data
-        run: npm run start --if-present\
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: start
       - name: Push data
         uses: github-actions-x/commit@v2.7
         with:
