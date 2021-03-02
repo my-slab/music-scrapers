@@ -3,6 +3,8 @@ import { PublicationQuery } from './types';
 import { goto, launch, teardown } from './utils';
 
 async function task(publicationQuery: PublicationQuery) {
+  console.log('Fetching::', publicationQuery.URL, '\n');
+
   let browser = await launch();
   let page = await goto(browser, publicationQuery.URL);
   let albums = await publicationQuery.scrape(page);
@@ -10,7 +12,7 @@ async function task(publicationQuery: PublicationQuery) {
   await teardown(browser);
 }
 
-(async () => {
+async function scrape() {
   let p: keyof typeof publications;
   for (p in publications) {
     let publication = publications[p];
@@ -19,4 +21,8 @@ async function task(publicationQuery: PublicationQuery) {
       await task(publicationQuery);
     }
   }
+}
+
+(async () => {
+  await scrape();
 })();
