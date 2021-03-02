@@ -22,7 +22,7 @@ jobs:
           node-version: '14'
       - uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: install
+          cmd: install --ignore-engines
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: start
