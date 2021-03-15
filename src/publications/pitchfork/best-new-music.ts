@@ -16,10 +16,16 @@ async function scrape(page: Page): Promise<Album[]> {
         children[1] as HTMLElement,
       ];
 
-      albums.push({
-        artist: artist.innerText,
-        title: title.innerText,
-      });
+      let titles = title.innerText.split('/');
+      if (titles.length > 1) {
+        for (let t of titles)
+          albums.push({ artist: artist.innerText, title: t });
+      } else {
+        albums.push({
+          artist: artist.innerText,
+          title: title.innerText,
+        });
+      }
     }
 
     return albums;

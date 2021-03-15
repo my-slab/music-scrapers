@@ -1,6 +1,6 @@
 import * as publications from './publications';
 import { PublicationQuery } from './types';
-import { goto, launch, teardown } from './utils';
+import { cleanAlbums, goto, launch, teardown } from './utils';
 
 async function task(publicationQuery: PublicationQuery) {
   console.log('Fetching::', publicationQuery.URL, '\n');
@@ -8,7 +8,8 @@ async function task(publicationQuery: PublicationQuery) {
   let browser = await launch();
   let page = await goto(browser, publicationQuery.URL);
   let albums = await publicationQuery.scrape(page);
-  await publicationQuery.save(albums);
+  albums = cleanAlbums(albums);
+  publicationQuery.save(albums);
   await teardown(browser);
 }
 

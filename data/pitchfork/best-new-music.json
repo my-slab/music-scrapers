@@ -65,6 +65,19 @@
     }
   },
   {
+    "id": "29fab96f-c3a2-4251-80f6-7ccda50da706",
+    "name": "Amaarae",
+    "release": {
+      "type": "release",
+      "id": "972bd906-2fbb-425c-ab96-b08bc4bacad2",
+      "title": "The Angel You Don't Know",
+      "cover": {
+        "small": "http://coverartarchive.org/release/972bd906-2fbb-425c-ab96-b08bc4bacad2/27791357469-250.jpg",
+        "large": "http://coverartarchive.org/release/972bd906-2fbb-425c-ab96-b08bc4bacad2/27791357469-500.jpg"
+      }
+    }
+  },
+  {
     "id": "b48d7422-680f-495e-9c98-fdbdfe76807a",
     "name": "Angel Bat Dawid",
     "release": {
@@ -74,6 +87,32 @@
       "cover": {
         "small": "http://coverartarchive.org/release/bee3e2c8-0405-48da-8a65-dc1b47c0e510/27739983579-250.jpg",
         "large": "http://coverartarchive.org/release/bee3e2c8-0405-48da-8a65-dc1b47c0e510/27739983579-500.jpg"
+      }
+    }
+  },
+  {
+    "id": "763cb144-afdb-471e-bd86-d4f5b9b58641",
+    "name": "Adrianne Lenker",
+    "release": {
+      "type": "release",
+      "id": "46b96d25-e893-4bac-a2b2-379a32f591b3",
+      "title": "songs",
+      "cover": {
+        "small": "http://coverartarchive.org/release/46b96d25-e893-4bac-a2b2-379a32f591b3/27590284694-250.jpg",
+        "large": "http://coverartarchive.org/release/46b96d25-e893-4bac-a2b2-379a32f591b3/27590284694-500.jpg"
+      }
+    }
+  },
+  {
+    "id": "763cb144-afdb-471e-bd86-d4f5b9b58641",
+    "name": "Adrianne Lenker",
+    "release": {
+      "type": "release",
+      "id": "eb5adcee-724f-4906-aacb-ff70e752a3b0",
+      "title": "instrumentals",
+      "cover": {
+        "small": "http://coverartarchive.org/release/eb5adcee-724f-4906-aacb-ff70e752a3b0/27593222769-250.jpg",
+        "large": "http://coverartarchive.org/release/eb5adcee-724f-4906-aacb-ff70e752a3b0/27593222769-500.jpg"
       }
     }
   },

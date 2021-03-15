@@ -1,8 +1,8 @@
 import { Page } from 'puppeteer';
 
 export interface Album {
-  artist: String;
-  title: String;
+  artist: string;
+  title: string;
 }
 
 export interface PublicationQuery {

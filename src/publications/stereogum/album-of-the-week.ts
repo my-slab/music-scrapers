@@ -17,9 +17,7 @@ async function scrape(page: Page): Promise<Album[]> {
       ];
 
       albums.push({
-        artist: (artist.textContent || '')
-          .split('Album Of The Week:')[1]
-          .trim(),
+        artist: (artist.textContent || '').split('Album Of The Week:')[1],
         title: title.innerText,
       });
     }

@@ -104,7 +104,7 @@ async function fetchCover(release: Omit<Release, 'cover'>) {
 }
 
 (async function () {
-  let file = fs.readFileSync('./data/pitchfork/best-new-music/albums.json');
+  let file = fs.readFileSync('./data/raw/pitchfork/best-new-music.json');
   let data = JSON.parse(file.toString());
   let entries: Entry[] = [];
 
@@ -126,7 +126,7 @@ async function fetchCover(release: Omit<Release, 'cover'>) {
   }
 
   fs.writeFileSync(
-    './data/pitchfork/best-new-music/entries.json',
+    './data/pitchfork/best-new-music.json',
     JSON.stringify(entries)
   );
 })();

@@ -14,8 +14,8 @@ async function scrape(page: Page): Promise<Album[]> {
       let [artist, title] = (element as HTMLElement).innerText.split('-');
 
       albums.push({
-        artist: artist.trim(),
-        title: title.trim(),
+        artist: artist,
+        title: title,
       });
     }
 
