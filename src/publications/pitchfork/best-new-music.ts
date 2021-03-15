@@ -2,7 +2,7 @@ import { Album, PublicationQuery } from '../../types';
 import { Page } from 'puppeteer';
 import { save } from '../index';
 
-const PATH = './data/pitchfork/best-new-music/albums.json';
+const PATH = './data/raw/pitchfork/best-new-music.json';
 const URL = 'https://pitchfork.com/reviews/best/albums';
 
 async function scrape(page: Page): Promise<Album[]> {

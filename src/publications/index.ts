@@ -11,7 +11,7 @@ export * from './the-needle-drop';
 export function save(path: string) {
   return function (albums: Album[]) {
     let data = read(path);
-    data = JSON.stringify(uniqWith([...data, ...albums], isEqual));
+    data = JSON.stringify(uniqWith([...albums, ...data], isEqual));
     write(path, data);
   };
 }

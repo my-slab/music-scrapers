@@ -2,7 +2,7 @@ import { Album, PublicationQuery } from '../../types';
 import { Page } from 'puppeteer';
 import { save } from '../index';
 
-const PATH = './data/the-needle-drop/loved-list/albums.json';
+const PATH = './data/raw/the-needle-drop/loved-list.json';
 const URL = 'https://www.theneedledrop.com/loved-list';
 
 async function scrape(page: Page): Promise<Album[]> {

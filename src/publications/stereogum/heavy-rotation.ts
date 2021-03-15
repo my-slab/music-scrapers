@@ -2,7 +2,7 @@ import { Album, PublicationQuery } from '../../types';
 import { Page } from 'puppeteer';
 import { save } from '../index';
 
-const PATH = './data/stereogum/heavy-rotation/albums.json';
+const PATH = './data/raw/stereogum/heavy-rotation.json';
 const URL = 'https://www.stereogum.com/heavy-rotation';
 
 async function scrape(page: Page): Promise<Album[]> {
