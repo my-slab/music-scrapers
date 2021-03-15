@@ -1,26 +1,7 @@
 import fs from 'fs';
 import fetch from 'isomorphic-unfetch';
-
-interface Artist {
-  id: string;
-  name: string;
-}
-
-interface Release {
-  type: 'release' | 'release-group';
-  id: string;
-  title: string;
-  cover: Cover;
-}
-
-interface Cover {
-  small: string;
-  large: string;
-}
-
-interface Entry extends Artist {
-  release: Release;
-}
+import { Artist, Cover, Release, Releases } from './types';
+import { sleep } from './utils';
 
 const MUSIC_BRAINZ_URL = 'https://musicbrainz.org/ws/2/';
 const COVER_ARCHIVE_URL = 'https://coverartarchive.org/';
@@ -62,7 +43,7 @@ async function fetchRelease(
             title: _title,
             id: _id,
           }: { title: string; id: string } = release;
-          if (_title == title) {
+          if (_title.toLowerCase().trim() == title.toLowerCase().trim()) {
             id = _id;
             return { id, title };
           }
@@ -103,30 +84,43 @@ async function fetchCover(release: Omit<Release, 'cover'>) {
     });
 }
 
-(async function () {
-  let file = fs.readFileSync('./data/raw/pitchfork/best-new-music.json');
-  let data = JSON.parse(file.toString());
-  let entries: Entry[] = [];
+export async function lookup() {
+  let inPath = './data/raw';
+  let outPath = './data';
+  let filePaths = [
+    '/pitchfork/best-new-music.json',
+    '/stereogum/heavy-rotation.json',
+    '/stereogum/album-of-the-week.json',
+    '/the-needle-drop/loved-list.json',
+  ];
 
-  for (let d of data) {
-    let { title, artist: a } = d;
+  for (let filePath of filePaths) {
+    let file = fs.readFileSync(`${inPath}${filePath}`);
+    let data = JSON.parse(file.toString());
+    let entries: Releases[] = [];
+    console.log(`Lookup::${filePath}`);
 
-    try {
-      let artist: Artist = await fetchArtist(a);
-      let release: Omit<Release, 'cover'> = await fetchRelease(
-        artist.id,
-        title
-      );
-      let cover: Cover = await fetchCover(release);
+    for (let d of data) {
+      let { artist: a, title } = d;
+      console.log(`\t${a} - ${title}`);
 
-      entries.push({ ...artist, release: { ...release, cover } });
-    } catch (e) {
-      console.log('===\n', `Error::${a} - ${title}`, '\n===');
+      sleep(3);
+
+      try {
+        let artist: Artist = await fetchArtist(a);
+        let release: Omit<Release, 'cover'> = await fetchRelease(
+          artist.id,
+          title
+        );
+        let cover: Cover = await fetchCover(release);
+
+        entries.push({ ...artist, release: { ...release, cover } });
+      } catch (e) {
+        console.log(e);
+        console.log('🚨', `\tError::${a} - ${title}`, '🚨');
+      }
     }
-  }
 
-  fs.writeFileSync(
-    './data/pitchfork/best-new-music.json',
-    JSON.stringify(entries)
-  );
-})();
+    fs.writeFileSync(`${outPath}${filePath}`, JSON.stringify(entries));
+  }
+}
