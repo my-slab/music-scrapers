@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'fs'
 
 /**
  *
@@ -8,10 +8,10 @@ import fs from 'fs';
  */
 export function read(path: string) {
   try {
-    let file = fs.readFileSync(path);
-    return JSON.parse(file.toString());
+    let file = fs.readFileSync(path)
+    return JSON.parse(file.toString())
   } catch (error) {
-    return [];
+    return []
   }
 }
 
@@ -24,5 +24,5 @@ export function read(path: string) {
  * write('./albums.json', [])
  */
 export function write(path: string, data: string) {
-  fs.writeFileSync(path, data);
+  fs.writeFileSync(path, data)
 }
