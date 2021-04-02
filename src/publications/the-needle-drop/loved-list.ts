@@ -1,3 +1,4 @@
+import unescape from 'lodash/unescape'
 import { Album, PublicationQuery } from '../../types'
 import { Page } from 'puppeteer'
 import { save } from '../index'
@@ -14,8 +15,8 @@ async function scrape(page: Page): Promise<Album[]> {
       let [artist, title] = innerHTML.split('-')
 
       albums.push({
-        artist: artist,
-        title: title,
+        artist: unescape(artist),
+        title: unescape(title),
       })
     }
 
