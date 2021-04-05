@@ -1,6 +1,10 @@
 import puppeteer, { Browser, Page } from 'puppeteer'
 
 /**
+ * launch
+ *
+ * Create a browser instance.
+ *
  * @example
  * let browser = await launch()
  */
@@ -9,9 +13,12 @@ export async function launch(): Promise<Browser> {
 }
 
 /**
+ * goto
  *
- * @param browser
- * @param url
+ * Create a new page and navigate it
+ *
+ * @param browser Browser
+ * @param url string
  *
  * @example
  * let page = await goto(browser, url)
@@ -23,8 +30,12 @@ export async function goto(browser: Browser, url: string): Promise<Page> {
 }
 
 /**
+ * teardown
  *
- * @param browser
+ * Close the browser and pages.
+ *
+ * @param browser Browser
+ *
  * @example
  * await teardown(browser)
  */

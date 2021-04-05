@@ -1,33 +1,31 @@
-import unescape from 'lodash/unescape'
-import { Album } from '../types'
+export { cleanAlbums } from './data'
+export { goto, launch, teardown } from './browser'
+export { read, write } from './file'
 
-export * from './browser'
-export * from './file'
-
-/** cleanAlbums */
-export function cleanAlbums(albums: Album[]) {
-  function cleanText(text: string) {
-    text = text.trim()
-    text = unescape(text)
-    text = text.replace('’', "'")
-    return text
-  }
-
-  let cleanedAlbums: Album[] = []
-  albums.map((album) => {
-    let [artist, title] = Object.values(album)
-    artist = cleanText(artist)
-    title = cleanText(title)
-    cleanedAlbums.push({ artist, title })
-  })
-
-  return cleanedAlbums
-}
-
-function msleep(n: number) {
-  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, n)
-}
-
+/**
+ * sleep
+ *
+ * Sleep for n of seconds
+ *
+ * @param n number
+ *
+ * @example
+ * sleep(1)
+ */
 export function sleep(n: number) {
   msleep(n * 1000)
+}
+
+/**
+ * msleep
+ *
+ * Sleep for n of milliseconds
+ *
+ * @param n number
+ *
+ * @example
+ * msleep(1000)
+ */
+function msleep(n: number) {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, n)
 }

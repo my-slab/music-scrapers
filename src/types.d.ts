@@ -1,7 +1,7 @@
 import { Page } from 'puppeteer'
 
 export interface Album {
-  artist: string
+  artist: string | string[]
   title: string
 }
 
