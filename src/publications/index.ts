@@ -1,12 +1,11 @@
 import isEqual from 'lodash/isEqual'
 import uniqWith from 'lodash/uniqWith'
-
-import { read, write } from '../utils'
 import { Album } from '../types'
+import { read, write } from '../utils'
 
-export * from './pitchfork'
-export * from './stereogum'
-export * from './the-needle-drop'
+export { pitchfork } from './pitchfork'
+export { stereogum } from './stereogum'
+export { theNeedleDrop } from './the-needle-drop'
 
 export function save(path: string) {
   return function (albums: Album[]) {

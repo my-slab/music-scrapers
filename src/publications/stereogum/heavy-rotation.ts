@@ -1,5 +1,4 @@
-import unescape from 'lodash/unescape'
-import { Album, PublicationQuery } from '../../types'
+import { Album, List } from '../../types'
 import { Page } from 'puppeteer'
 import { save } from '../index'
 
@@ -7,16 +6,15 @@ const PATH = './data/raw/stereogum/heavy-rotation.json'
 const URL = 'https://www.stereogum.com/heavy-rotation'
 
 async function scrape(page: Page): Promise<Album[]> {
-  return page.evaluate((e) => {
-    const SELECTOR = ['.article-card__title', 'a'].join(' ')
+  return page.evaluate(() => {
+    const SELECTOR = '.article-card__title a'
 
     let albums: Album[] = []
     for (let element of document.querySelectorAll(SELECTOR)) {
       let [artist, title] = (element as HTMLElement).innerText.split('-')
-
       albums.push({
-        artist: unescape(artist),
-        title: unescape(title),
+        artist: artist,
+        title: title,
       })
     }
 
@@ -24,7 +22,7 @@ async function scrape(page: Page): Promise<Album[]> {
   })
 }
 
-export const heavyRotation: PublicationQuery = {
+export const heavyRotation: List = {
   URL,
   save: save(PATH),
   scrape,

@@ -1,16 +1,20 @@
 import * as publications from './publications'
-import { PublicationQuery } from './types'
+import { List } from './types'
 import { cleanAlbums, goto, launch, teardown } from './utils'
 
-async function task(publicationQuery: PublicationQuery) {
-  console.log('Fetching::', publicationQuery.URL)
+async function task(list: List) {
+  console.log('Fetching::', list.URL)
 
-  let browser = await launch()
-  let page = await goto(browser, publicationQuery.URL)
-  let albums = await publicationQuery.scrape(page)
-  albums = cleanAlbums(albums)
-  publicationQuery.save(albums)
-  await teardown(browser)
+  try {
+    let browser = await launch()
+    let page = await goto(browser, list.URL)
+    let albums = await list.scrape(page)
+    albums = cleanAlbums(albums)
+    list.save(albums)
+    await teardown(browser)
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 export async function scrape() {
@@ -18,8 +22,8 @@ export async function scrape() {
   for (p in publications) {
     let publication = publications[p]
     for (let pq in publication) {
-      let publicationQuery = (<any>publication)[pq]
-      await task(publicationQuery)
+      let list = (<any>publication)[pq]
+      await task(list)
     }
   }
 }

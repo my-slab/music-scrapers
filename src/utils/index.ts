@@ -1,5 +1,5 @@
+import unescape from 'lodash/unescape'
 import { Album } from '../types'
-import { decode } from 'html-entities'
 
 export * from './browser'
 export * from './file'
@@ -8,7 +8,7 @@ export * from './file'
 export function cleanAlbums(albums: Album[]) {
   function cleanText(text: string) {
     text = text.trim()
-    text = decode(text)
+    text = unescape(text)
     text = text.replace('’', "'")
     return text
   }

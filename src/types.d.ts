@@ -5,7 +5,7 @@ export interface Album {
   title: string
 }
 
-export interface PublicationQuery {
+export interface List {
   URL: string
   save: (albums: Album[]) => void
   scrape: (page: Page) => Promise<Album[]>

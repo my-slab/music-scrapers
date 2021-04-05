@@ -1,5 +1,4 @@
-import unescape from 'lodash/unescape'
-import { Album, PublicationQuery } from '../../types'
+import { Album, List } from '../../types'
 import { Page } from 'puppeteer'
 import { save } from '../index'
 
@@ -7,8 +6,8 @@ const PATH = './data/raw/pitchfork/best-new-music.json'
 const URL = 'https://pitchfork.com/reviews/best/albums'
 
 async function scrape(page: Page): Promise<Album[]> {
-  return page.evaluate((e) => {
-    const SELECTOR = ['.review', '.review__title'].join(' ')
+  return page.evaluate(() => {
+    const SELECTOR = '.review .review__title'
 
     let albums: Album[] = []
     for (let { children } of document.querySelectorAll(SELECTOR)) {
@@ -20,10 +19,19 @@ async function scrape(page: Page): Promise<Album[]> {
       if (titles.length > 1) {
         for (let t of titles) albums.push({ artist: artist.innerText, title: t })
       } else {
-        albums.push({
-          artist: unescape(artist.innerText),
-          title: unescape(title.innerText),
-        })
+        // Pitchfork will group multiple artists in <li>
+        // elements, so we just grab the first one.
+        if (artist.children.length > 1) {
+          albums.push({
+            artist: (artist.children[0] as HTMLElement).innerText,
+            title: title.innerText,
+          })
+        } else {
+          albums.push({
+            artist: artist.innerText,
+            title: title.innerText,
+          })
+        }
       }
     }
 
@@ -31,7 +39,7 @@ async function scrape(page: Page): Promise<Album[]> {
   })
 }
 
-export const bestNewMusic: PublicationQuery = {
+export const bestNewMusic: List = {
   URL,
   save: save(PATH),
   scrape,
