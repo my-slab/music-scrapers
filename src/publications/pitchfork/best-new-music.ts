@@ -19,11 +19,15 @@ async function scrape(page: Page): Promise<Album[]> {
       if (titles.length > 1) {
         for (let t of titles) albums.push({ artist: artist.innerText, title: t })
       } else {
-        // Pitchfork will group multiple artists in <li>
-        // elements, so we just grab the first one.
+        // Pitchfork will group multiple artists in <li> elements.
         if (artist.children.length > 1) {
+          let artists: string[] = []
+          for (let c of artist.children) {
+            artists.push((c as HTMLElement).innerText)
+          }
+
           albums.push({
-            artist: (artist.children[0] as HTMLElement).innerText,
+            artist: artists,
             title: title.innerText,
           })
         } else {
