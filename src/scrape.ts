@@ -21,8 +21,8 @@ export async function scrape() {
   let p: keyof typeof publications
   for (p in publications) {
     let publication = publications[p]
-    for (let pq in publication) {
-      let list = (<any>publication)[pq]
+    for (let l in publication) {
+      let list = (<any>publication)[l]
       await task(list)
     }
   }

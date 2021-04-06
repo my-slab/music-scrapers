@@ -1,6 +1,6 @@
 import { Album, List } from '../../types'
 import { Page } from 'puppeteer'
-import { save } from '../index'
+import { save } from '../../utils'
 
 const PATH = './data/raw/the-needle-drop/loved-list.json'
 const URL = 'https://www.theneedledrop.com/loved-list'

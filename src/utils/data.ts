@@ -1,5 +1,8 @@
 import unescape from 'lodash/unescape'
+import isEqual from 'lodash/isEqual'
+import uniqWith from 'lodash/uniqWith'
 import { Album } from '../types'
+import { read, write } from './file'
 
 /**
  * cleanAlbums
@@ -34,4 +37,23 @@ export function cleanAlbums(albums: Album[]) {
   })
 
   return cleanedAlbums
+}
+
+/**
+ * save
+ *
+ * Save a list to file
+ *
+ * @param path string
+ *
+ * @example
+ * let saveList = save('./here.json')
+ * saveList([{artist: "Charli XCX", title: "how i'm feeling now"}])
+ */
+export function save(path: string) {
+  return function (albums: Album[]) {
+    let data = read(path)
+    data = JSON.stringify(uniqWith([...albums, ...data], isEqual))
+    write(path, data)
+  }
 }

@@ -1,6 +1,6 @@
 import { Album, List } from '../../types'
 import { Page } from 'puppeteer'
-import { save } from '../index'
+import { save } from '../../utils'
 
 const PATH = './data/raw/pitchfork/best-new-music.json'
 const URL = 'https://pitchfork.com/reviews/best/albums'

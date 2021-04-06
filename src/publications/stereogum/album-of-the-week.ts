@@ -1,6 +1,6 @@
 import { Album, List } from '../../types'
 import { Page } from 'puppeteer'
-import { save } from '../index'
+import { save } from '../../utils'
 
 const PATH = './data/raw/stereogum/album-of-the-week.json'
 const URL = 'https://www.stereogum.com/category/reviews/album-of-the-week/'
