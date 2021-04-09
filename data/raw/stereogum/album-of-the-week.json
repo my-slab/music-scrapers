@@ -1,4 +1,5 @@
 [
+  { "artist": "Damon Locks & Black Monument Ensemble", "title": "NOW" },
   { "artist": "Ryley Walker", "title": "Course In Fable" },
   { "artist": "serpentwithfeet", "title": "DEACON" },
   { "artist": "New Pagans", "title": "The Seed, The Vessel, The Roots And All" },
@@ -17,5 +18,7 @@
   { "artist": "Rico Nasty", "title": "Nightmare Vacation" },
   { "artist": "ME REX", "title": "Triceratops" },
   { "artist": "Hypoluxo", "title": "Hypoluxo" },
-  { "artist": "Told Slant", "title": "Point The Flashlight And Walk" }
+  { "artist": "Told Slant", "title": "Point The Flashlight And Walk" },
+  { "artist": "Adulkt Life", "title": "Book Of Curses" },
+  { "artist": "War On Women", "title": "Wonderful Hell" }
 ]
