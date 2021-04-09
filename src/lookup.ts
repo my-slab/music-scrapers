@@ -114,12 +114,13 @@ function isArtistMatch(a: string, b: string): boolean {
 async function fetchRelease({ artist, title }: { artist: string; title: string }): Promise<Maybe<Release>> {
   let count = Infinity
   let offset = 0
-
-  while (offset < count) {
+  let score = 100
+  while (offset < count && score > 70) {
     let result = await musicBrainz.releaseQuery({ offset, title })
     count = result.count
 
     for (let r of result.releases) {
+      score = r.score
       let release = pickRelease(r)
       if (isArtistMatch(artist, release.artistDisplayName)) return release
     }
@@ -189,6 +190,9 @@ export async function lookup() {
       if (partialRelease) {
         let cover = await fetchCover({ id: partialRelease.id })
         releases.push({ ...partialRelease, cover })
+      } else {
+        // TODO: capture not found
+        console.log(`\t\tNot found`)
       }
     }
 
