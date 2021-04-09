@@ -9,10 +9,9 @@ import { read, write } from './file'
  *
  * Normalize scraped text.
  *
- * @param albums Album[]
- *
  * @example
- * cleanAlbums([{artist: "Charli XCX", title: "how i'm feeling now"}])
+ * cleanAlbums([{artist: "Charli XCX", title: "how i’m feeling now"}])
+ * // [{artist: "Charli XCX", title: "how i'm feeling now"}]
  */
 export function cleanAlbums(albums: Album[]) {
   function cleanText(text: string) {
@@ -26,13 +25,8 @@ export function cleanAlbums(albums: Album[]) {
   albums.map((album) => {
     let artist = album.artist
     let title = album.title
-
-    if (Array.isArray(artist)) artist = artist.map(cleanText)
-    else {
-      artist = cleanText(artist)
-      title = cleanText(title)
-    }
-
+    artist = cleanText(artist)
+    title = cleanText(title)
     cleanedAlbums.push({ artist, title })
   })
 
@@ -43,8 +37,6 @@ export function cleanAlbums(albums: Album[]) {
  * save
  *
  * Save a list to file
- *
- * @param path string
  *
  * @example
  * let saveList = save('./here.json')

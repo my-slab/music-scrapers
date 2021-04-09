@@ -5,8 +5,6 @@ import fs from 'fs'
  *
  * Read data from a file.
  *
- * @param path string
- *
  * @example
  * let data = read('./albums.json')
  */
@@ -23,9 +21,6 @@ export function read(path: string) {
  * write
  *
  * Write data to a file.
- *
- * @param path string
- * @param data string
  *
  * @example
  * write('./albums.json', "[]")
