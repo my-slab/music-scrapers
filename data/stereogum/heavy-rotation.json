@@ -1,1 +1,517 @@
-[{"id":"ee7c0013-039b-43c6-a956-81d8ad3b9605","name":"Enforced","release":{"type":"release","id":"15a1aeab-e342-4e02-85b8-54e265f66a56","title":"Kill Grid","cover":{"small":"http://coverartarchive.org/release/15a1aeab-e342-4e02-85b8-54e265f66a56/28803950145-250.jpg","large":"http://coverartarchive.org/release/15a1aeab-e342-4e02-85b8-54e265f66a56/28803950145-500.jpg"}}},{"id":"170059cf-743a-487a-b1c1-693c30e2171a","name":"Harmony Woods","release":{"type":"release","id":"bcb3361b-dec3-4abf-a37e-1f2c41d1ca77","title":"Graceful Rage","cover":{"small":"http://coverartarchive.org/release/bcb3361b-dec3-4abf-a37e-1f2c41d1ca77/28808475216-250.jpg","large":"http://coverartarchive.org/release/bcb3361b-dec3-4abf-a37e-1f2c41d1ca77/28808475216-500.jpg"}}},{"id":"76654b90-7bfd-4423-899e-97ef9c2c5eed","name":"Really From","release":{"type":"release","id":"7c65b2bd-53f0-470a-9501-70dee2bd3393","title":"Really From","cover":{"small":"http://coverartarchive.org/release/7c65b2bd-53f0-470a-9501-70dee2bd3393/28801399941-250.jpg","large":"http://coverartarchive.org/release/7c65b2bd-53f0-470a-9501-70dee2bd3393/28801399941-500.jpg"}}},{"id":"6caf09f5-2f01-4f76-bcc7-6207930c56c6","name":"Arab Strap","release":{"type":"release-group","id":"e1086f4a-db0c-43b0-a609-ad9053996db9","title":"As Days Get Dark","cover":{"small":"http://coverartarchive.org/release/ed88a552-57d5-4128-ad85-363a905b62a3/27873016343-250.jpg","large":"http://coverartarchive.org/release/ed88a552-57d5-4128-ad85-363a905b62a3/27873016343-500.jpg"}}},{"id":"81271250-cdce-4b93-9c05-24f717285040","name":"Duke Deuce","release":{"type":"release","id":"fab93d61-423d-4795-a14c-8a17b2b31ec9","title":"Duke Nukem","cover":{"small":"http://coverartarchive.org/release/fab93d61-423d-4795-a14c-8a17b2b31ec9/28657437915-250.jpg","large":"http://coverartarchive.org/release/fab93d61-423d-4795-a14c-8a17b2b31ec9/28657437915-500.jpg"}}},{"id":"29c91854-8c45-469b-b36d-a11fb650638b","name":"Cloud Nothings","release":{"type":"release-group","id":"a53f5355-4ef5-4dee-96df-c4f9c13e361e","title":"The Shadow I Remember","cover":{"small":"http://coverartarchive.org/release/50b7c52c-1914-4b3d-8151-83d866552321/28676919335-250.jpg","large":"http://coverartarchive.org/release/50b7c52c-1914-4b3d-8151-83d866552321/28676919335-500.jpg"}}},{"id":"4aae17a7-9f0c-487b-b60e-f8eafb410b1d","name":"Nick Cave","release":{"type":"release-group","id":"189d0b66-b509-43dc-baac-59ee6fe0ab90","title":"Carnage","cover":{"small":"http://coverartarchive.org/release/a8c82f90-d509-4faf-a967-fafde1de9463/28681158363-250.jpg","large":"http://coverartarchive.org/release/a8c82f90-d509-4faf-a967-fafde1de9463/28681158363-500.jpg"}}},{"id":"e3bda984-f349-4924-b4b8-f72478bbb3f3","name":"Julien Baker","release":{"type":"release","id":"26ba431e-ee28-4609-9ade-5776c27fd105","title":"Little Oblivions","cover":{"small":"http://coverartarchive.org/release/26ba431e-ee28-4609-9ade-5776c27fd105/28060181324-250.jpg","large":"http://coverartarchive.org/release/26ba431e-ee28-4609-9ade-5776c27fd105/28060181324-500.jpg"}}}]
+[
+  {
+    "artistDisplayName": "Damon Locks Black Monument Ensemble",
+    "artists": [
+      {
+        "id": "1ca461cd-121d-4772-b1da-e3c559256ac1",
+        "name": "Damon Locks Black Monument Ensemble",
+        "sort-name": "Damon Locks Black Monument Ensemble"
+      }
+    ],
+    "date": "2021-04-09",
+    "id": "43214d9f-5607-41be-84df-5bb19c1138cd",
+    "title": "Now",
+    "cover": {
+      "id": 28683680317,
+      "small": "http://coverartarchive.org/release/43214d9f-5607-41be-84df-5bb19c1138cd/28683680317-250.jpg",
+      "large": "http://coverartarchive.org/release/43214d9f-5607-41be-84df-5bb19c1138cd/28683680317-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Godspeed You! Black Emperor",
+    "artists": [
+      {
+        "id": "3648db01-b29d-4ab9-835c-83f6a5068fe4",
+        "name": "Godspeed You! Black Emperor",
+        "sort-name": "Godspeed You! Black Emperor"
+      }
+    ],
+    "date": "2021-04-02",
+    "id": "4f314e37-3be4-4655-bfdb-43a2fa208dc3",
+    "title": "G_d’s Pee AT STATE’S END!",
+    "cover": {
+      "id": 29035832451,
+      "small": "http://coverartarchive.org/release/4f314e37-3be4-4655-bfdb-43a2fa208dc3/29035832451-250.jpg",
+      "large": "http://coverartarchive.org/release/4f314e37-3be4-4655-bfdb-43a2fa208dc3/29035832451-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Ryley Walker",
+    "artists": [{ "id": "795d12c3-099e-4195-8f40-6764472db494", "name": "Ryley Walker", "sort-name": "Walker, Ryley" }],
+    "date": "2021-04-02",
+    "id": "b1759581-88c2-42bd-b321-b08341609897",
+    "title": "Course in Fable",
+    "cover": {
+      "id": 29003302151,
+      "small": "http://coverartarchive.org/release/b1759581-88c2-42bd-b321-b08341609897/29003302151-250.jpg",
+      "large": "http://coverartarchive.org/release/b1759581-88c2-42bd-b321-b08341609897/29003302151-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Tenue",
+    "artists": [{ "id": "c0ed4f64-d8c3-48d1-868a-f041953fb92c", "name": "Tenue", "sort-name": "Tenue" }],
+    "date": "2021-03-30",
+    "id": "724a4a10-eed2-4370-8d2e-31dfd126c3bc",
+    "title": "Territorios",
+    "cover": {
+      "id": 28965616246,
+      "small": "http://coverartarchive.org/release/724a4a10-eed2-4370-8d2e-31dfd126c3bc/28965616246-250.jpg",
+      "large": "http://coverartarchive.org/release/724a4a10-eed2-4370-8d2e-31dfd126c3bc/28965616246-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Civic",
+    "artists": [
+      {
+        "id": "be1bee2a-9304-4416-8e1f-9fc655b8c9fb",
+        "name": "Civic",
+        "sort-name": "Civic",
+        "disambiguation": "Melbourne, Australia band"
+      }
+    ],
+    "date": "2021-03-26",
+    "id": "4945fcaf-cb88-4f2b-bc29-3d1e50593186",
+    "title": "Future Forecast"
+  },
+  {
+    "artistDisplayName": "Genghis Tron",
+    "artists": [{ "id": "42d79b6b-2cfe-43f4-b5d9-239503074153", "name": "Genghis Tron", "sort-name": "Genghis Tron" }],
+    "date": "2021-03-26",
+    "id": "86796fa0-75b8-4197-9415-5c5d274c731b",
+    "title": "Dream Weapon",
+    "cover": {
+      "id": 28515762045,
+      "small": "http://coverartarchive.org/release/86796fa0-75b8-4197-9415-5c5d274c731b/28515762045-250.jpg",
+      "large": "http://coverartarchive.org/release/86796fa0-75b8-4197-9415-5c5d274c731b/28515762045-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Armand Hammer & The Alchemist",
+    "artists": [
+      { "id": "167a6f86-2c26-43fe-82f0-e4c8a39ea490", "name": "Armand Hammer", "sort-name": "Armand Hammer" },
+      {
+        "id": "03f3deb7-0419-4bf9-a1e7-511946385717",
+        "name": "The Alchemist",
+        "sort-name": "Alchemist, The",
+        "disambiguation": "hip hop DJ & producer"
+      }
+    ],
+    "date": "2021-03-26",
+    "id": "62f0432a-650a-4108-95c4-2d5c62b68b4d",
+    "title": "Haram",
+    "cover": {
+      "id": 28916551054,
+      "small": "http://coverartarchive.org/release/62f0432a-650a-4108-95c4-2d5c62b68b4d/28916551054-250.jpg",
+      "large": "http://coverartarchive.org/release/62f0432a-650a-4108-95c4-2d5c62b68b4d/28916551054-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Noga Erez",
+    "artists": [{ "id": "06479724-ee7d-471e-a3d4-4554330a0293", "name": "Noga Erez", "sort-name": "Erez, Noga" }],
+    "date": "2021-03-26",
+    "id": "bb2d8594-8a31-4aae-a5c5-5068cbbfd32f",
+    "title": "KIDS",
+    "cover": {
+      "id": 28795055457,
+      "small": "http://coverartarchive.org/release/bb2d8594-8a31-4aae-a5c5-5068cbbfd32f/28795055457-250.jpg",
+      "large": "http://coverartarchive.org/release/bb2d8594-8a31-4aae-a5c5-5068cbbfd32f/28795055457-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Floating Points, Pharoah Sanders & London Symphony Orchestra",
+    "artists": [
+      { "id": "69d9c5ba-7bba-4cb7-ab32-8ccc48ad4f97", "name": "Floating Points", "sort-name": "Floating Points" },
+      { "id": "b3a0912a-a62a-4388-9368-7cb21ed5caf9", "name": "Pharoah Sanders", "sort-name": "Sanders, Pharoah" },
+      {
+        "id": "38712b4c-0fd4-4c65-8c7a-45676fecc973",
+        "name": "London Symphony Orchestra",
+        "sort-name": "London Symphony Orchestra"
+      }
+    ],
+    "date": "2021-03-26",
+    "id": "9f279a47-778f-44fe-a9ff-4ca61dae26c8",
+    "title": "Promises",
+    "cover": {
+      "id": 28949992190,
+      "small": "http://coverartarchive.org/release/9f279a47-778f-44fe-a9ff-4ca61dae26c8/28949992190-250.jpg",
+      "large": "http://coverartarchive.org/release/9f279a47-778f-44fe-a9ff-4ca61dae26c8/28949992190-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Benny the Butcher & Harry Fraud",
+    "artists": [
+      { "id": "8ffb6b8e-3933-4f93-b315-8f5293b1b350", "name": "Benny the Butcher", "sort-name": "Benny the Butcher" },
+      { "id": "6c7bea28-c146-4c1d-bda3-bbbb0e18e76b", "name": "Harry Fraud", "sort-name": "Fraud, Harry" }
+    ],
+    "date": "2021-03-19",
+    "id": "e908d82e-18c8-46b4-98da-fd7579e097f9",
+    "title": "The Plugs I Met 2",
+    "cover": {
+      "id": 28818057266,
+      "small": "http://coverartarchive.org/release/e908d82e-18c8-46b4-98da-fd7579e097f9/28818057266-250.jpg",
+      "large": "http://coverartarchive.org/release/e908d82e-18c8-46b4-98da-fd7579e097f9/28818057266-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "serpentwithfeet",
+    "artists": [
+      {
+        "id": "cc9ddb3d-1217-4a40-9864-d85920cfa1ed",
+        "name": "serpentwithfeet",
+        "sort-name": "serpentwithfeet",
+        "disambiguation": "Josiahwise"
+      }
+    ],
+    "date": "2021-03-26",
+    "id": "666c7d56-b9e6-4786-a011-dd636481e53c",
+    "title": "DEACON",
+    "cover": {
+      "id": 28758124532,
+      "small": "http://coverartarchive.org/release/666c7d56-b9e6-4786-a011-dd636481e53c/28758124532-250.jpg",
+      "large": "http://coverartarchive.org/release/666c7d56-b9e6-4786-a011-dd636481e53c/28758124532-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Enforced",
+    "artists": [
+      {
+        "id": "ee7c0013-039b-43c6-a956-81d8ad3b9605",
+        "name": "Enforced",
+        "sort-name": "Enforced",
+        "disambiguation": "crossover thrash"
+      }
+    ],
+    "id": "6492173a-9685-4825-821b-d033cf1a4b70",
+    "title": "Kill Grid"
+  },
+  {
+    "artistDisplayName": "God’s Hate",
+    "artists": [
+      {
+        "id": "fe75a564-577f-4209-8d99-3c4ca4d6be3e",
+        "name": "God’s Hate",
+        "sort-name": "God’s Hate",
+        "disambiguation": "Los Angeles Metallic hardcore"
+      }
+    ],
+    "date": "2021-03-12",
+    "id": "e347906b-953e-4ef1-a8e9-825fe7d04343",
+    "title": "God's Hate",
+    "cover": {
+      "id": 28844656441,
+      "small": "http://coverartarchive.org/release/e347906b-953e-4ef1-a8e9-825fe7d04343/28844656441-250.jpg",
+      "large": "http://coverartarchive.org/release/e347906b-953e-4ef1-a8e9-825fe7d04343/28844656441-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "New Pagans",
+    "artists": [{ "id": "73d0deba-8dfe-474f-a345-07c1b639a345", "name": "New Pagans", "sort-name": "New Pagans" }],
+    "date": "2021-03-19",
+    "id": "7a6d7509-eaed-4cf5-a8be-66db67829db8",
+    "title": "The Seed, the Vessel, the Roots and All",
+    "cover": {
+      "id": 28874309289,
+      "small": "http://coverartarchive.org/release/7a6d7509-eaed-4cf5-a8be-66db67829db8/28874309289-250.jpg",
+      "large": "http://coverartarchive.org/release/7a6d7509-eaed-4cf5-a8be-66db67829db8/28874309289-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Harmony Woods",
+    "artists": [
+      {
+        "id": "170059cf-743a-487a-b1c1-693c30e2171a",
+        "name": "Harmony Woods",
+        "sort-name": "Harmony Woods",
+        "disambiguation": "Philadelphia, Pennsylvania"
+      }
+    ],
+    "date": "2021-03-12",
+    "id": "bcb3361b-dec3-4abf-a37e-1f2c41d1ca77",
+    "title": "GRACEFUL RAGE",
+    "cover": {
+      "id": 28808475216,
+      "small": "http://coverartarchive.org/release/bcb3361b-dec3-4abf-a37e-1f2c41d1ca77/28808475216-250.jpg",
+      "large": "http://coverartarchive.org/release/bcb3361b-dec3-4abf-a37e-1f2c41d1ca77/28808475216-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Really From",
+    "artists": [{ "id": "76654b90-7bfd-4423-899e-97ef9c2c5eed", "name": "Really From", "sort-name": "Really From" }],
+    "date": "2021-03-12",
+    "id": "0b5411c9-eecc-4858-a095-31642b8e9bc9",
+    "title": "Really From",
+    "cover": {
+      "id": 28976186246,
+      "small": "http://coverartarchive.org/release/0b5411c9-eecc-4858-a095-31642b8e9bc9/28976186246-250.jpg",
+      "large": "http://coverartarchive.org/release/0b5411c9-eecc-4858-a095-31642b8e9bc9/28976186246-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "closer",
+    "artists": [
+      {
+        "id": "b5a976cc-0b9f-4ed2-904a-3d64b588917c",
+        "name": "closer",
+        "sort-name": "closer",
+        "disambiguation": "three piece from brooklyn"
+      }
+    ],
+    "date": "2021-03-12",
+    "id": "2f711807-b8ca-4cd3-a960-3c282aeaa90d",
+    "title": "within one stem",
+    "cover": {
+      "id": 28803821235,
+      "small": "http://coverartarchive.org/release/2f711807-b8ca-4cd3-a960-3c282aeaa90d/28803821235-250.jpg",
+      "large": "http://coverartarchive.org/release/2f711807-b8ca-4cd3-a960-3c282aeaa90d/28803821235-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Worn",
+    "artists": [
+      {
+        "id": "8acb802d-7338-4138-8bdf-6a17da83890a",
+        "name": "Worn",
+        "sort-name": "Worn",
+        "disambiguation": "Hardcore punk from Pennsylvania"
+      }
+    ],
+    "date": "2021-03-05",
+    "id": "8cb60780-6f82-4f85-a678-97bee1d6ba8e",
+    "title": "Human Work",
+    "cover": {
+      "id": 29036290991,
+      "small": "http://coverartarchive.org/release/8cb60780-6f82-4f85-a678-97bee1d6ba8e/29036290991-250.jpg",
+      "large": "http://coverartarchive.org/release/8cb60780-6f82-4f85-a678-97bee1d6ba8e/29036290991-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Regional Justice Center",
+    "artists": [
+      {
+        "id": "64ad5550-e93f-4add-80c3-e6b651f4f250",
+        "name": "Regional Justice Center",
+        "sort-name": "Regional Justice Center"
+      }
+    ],
+    "date": "2021-03-05",
+    "id": "182d3be0-1279-4078-92f2-c06c22663254",
+    "title": "Crime and Punishment",
+    "cover": {
+      "id": 28794443126,
+      "small": "http://coverartarchive.org/release/182d3be0-1279-4078-92f2-c06c22663254/28794443126-250.jpg",
+      "large": "http://coverartarchive.org/release/182d3be0-1279-4078-92f2-c06c22663254/28794443126-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Home is Where",
+    "artists": [
+      { "id": "76ead0bf-51e0-43c8-ae8f-59caefdd84a2", "name": "Home is Where", "sort-name": "Home is Where" }
+    ],
+    "date": "2021-03-05",
+    "id": "240a146d-58cb-46ff-9e3e-bda0423a14e3",
+    "title": "i became birds"
+  },
+  {
+    "artistDisplayName": "Arab Strap",
+    "artists": [{ "id": "6caf09f5-2f01-4f76-bcc7-6207930c56c6", "name": "Arab Strap", "sort-name": "Arab Strap" }],
+    "date": "2021-03-05",
+    "id": "bc05203f-d9bb-4403-9eb4-00e6c64a70dd",
+    "title": "As Days Get Dark"
+  },
+  {
+    "artistDisplayName": "Bernice",
+    "artists": [{ "id": "8ff18a59-05df-4214-a9de-08deda8ec3df", "name": "Bernice", "sort-name": "Bernice" }],
+    "date": "2021-02-05",
+    "id": "fd54dd7a-efc7-4e15-b39e-1250d3398bef",
+    "title": "Eau De Bonjourno"
+  },
+  {
+    "artistDisplayName": "Duke Deuce",
+    "artists": [{ "id": "81271250-cdce-4b93-9c05-24f717285040", "name": "Duke Deuce", "sort-name": "Duke Deuce" }],
+    "date": "2021-02-26",
+    "id": "fab93d61-423d-4795-a14c-8a17b2b31ec9",
+    "title": "Duke Nukem",
+    "cover": {
+      "id": 28657437915,
+      "small": "http://coverartarchive.org/release/fab93d61-423d-4795-a14c-8a17b2b31ec9/28657437915-250.jpg",
+      "large": "http://coverartarchive.org/release/fab93d61-423d-4795-a14c-8a17b2b31ec9/28657437915-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Cloud Nothings",
+    "artists": [
+      { "id": "29c91854-8c45-469b-b36d-a11fb650638b", "name": "Cloud Nothings", "sort-name": "Cloud Nothings" }
+    ],
+    "date": "2021-02-26",
+    "id": "50b7c52c-1914-4b3d-8151-83d866552321",
+    "title": "The Shadow I Remember",
+    "cover": {
+      "id": 28676919335,
+      "small": "http://coverartarchive.org/release/50b7c52c-1914-4b3d-8151-83d866552321/28676919335-250.jpg",
+      "large": "http://coverartarchive.org/release/50b7c52c-1914-4b3d-8151-83d866552321/28676919335-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Nervous Dater",
+    "artists": [
+      { "id": "b045fecc-6661-4de8-887e-528410a65a95", "name": "Nervous Dater", "sort-name": "Nervous Dater" }
+    ],
+    "id": "6127051c-dcb6-4d36-91b4-99b6c5e94f3a",
+    "title": "Call in the Mess"
+  },
+  {
+    "artistDisplayName": "Nick Cave & Warren Ellis",
+    "artists": [
+      { "id": "4aae17a7-9f0c-487b-b60e-f8eafb410b1d", "name": "Nick Cave", "sort-name": "Cave, Nick" },
+      {
+        "id": "b083866c-6ef3-4c27-b360-7b601503c1e3",
+        "name": "Warren Ellis",
+        "sort-name": "Ellis, Warren",
+        "disambiguation": "Australian-French musician and composer"
+      }
+    ],
+    "date": "2021-02-25",
+    "id": "a8c82f90-d509-4faf-a967-fafde1de9463",
+    "title": "CARNAGE",
+    "cover": {
+      "id": 28681158363,
+      "small": "http://coverartarchive.org/release/a8c82f90-d509-4faf-a967-fafde1de9463/28681158363-250.jpg",
+      "large": "http://coverartarchive.org/release/a8c82f90-d509-4faf-a967-fafde1de9463/28681158363-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Julien Baker",
+    "artists": [{ "id": "e3bda984-f349-4924-b4b8-f72478bbb3f3", "name": "Julien Baker", "sort-name": "Baker, Julien" }],
+    "date": "2021-02-26",
+    "id": "26ba431e-ee28-4609-9ade-5776c27fd105",
+    "title": "Little Oblivions",
+    "cover": {
+      "id": 28060181324,
+      "small": "http://coverartarchive.org/release/26ba431e-ee28-4609-9ade-5776c27fd105/28060181324-250.jpg",
+      "large": "http://coverartarchive.org/release/26ba431e-ee28-4609-9ade-5776c27fd105/28060181324-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Wild Pink",
+    "artists": [{ "id": "94fdf751-0644-4b78-9e72-dbdce539b5b7", "name": "Wild Pink", "sort-name": "Wild Pink" }],
+    "date": "2021-02-19",
+    "id": "e7e52e18-b286-4362-a29b-e7f89fc693ab",
+    "title": "A Billion Little Lights",
+    "cover": {
+      "id": 28621974246,
+      "small": "http://coverartarchive.org/release/e7e52e18-b286-4362-a29b-e7f89fc693ab/28621974246-250.jpg",
+      "large": "http://coverartarchive.org/release/e7e52e18-b286-4362-a29b-e7f89fc693ab/28621974246-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Cassandra Jenkins",
+    "artists": [
+      { "id": "1c5fb201-9555-4e94-94b6-d5ac6fccb64c", "name": "Cassandra Jenkins", "sort-name": "Jenkins, Cassandra" }
+    ],
+    "date": "2021-02-19",
+    "id": "dd00e61a-4d7f-4330-afe5-7c7535165dcd",
+    "title": "An Overview on Phenomenal Nature",
+    "cover": {
+      "id": 28621839520,
+      "small": "http://coverartarchive.org/release/dd00e61a-4d7f-4330-afe5-7c7535165dcd/28621839520-250.jpg",
+      "large": "http://coverartarchive.org/release/dd00e61a-4d7f-4330-afe5-7c7535165dcd/28621839520-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "for your health",
+    "artists": [
+      {
+        "id": "3a1e54da-7869-4a75-be3a-5688029a23ae",
+        "name": "for your health",
+        "sort-name": "for your health",
+        "disambiguation": "screamo band from Columbus, Ohio"
+      }
+    ],
+    "date": "2021-02-12",
+    "id": "952a9347-d0c3-47c8-9188-68f6c3e3b243",
+    "title": "In Spite Of",
+    "cover": {
+      "id": 28673359959,
+      "small": "http://coverartarchive.org/release/952a9347-d0c3-47c8-9188-68f6c3e3b243/28673359959-250.jpg",
+      "large": "http://coverartarchive.org/release/952a9347-d0c3-47c8-9188-68f6c3e3b243/28673359959-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "The Soul Children",
+    "artists": [
+      { "id": "e6a6a3f5-0f0f-4e97-b78e-917b1edc62d0", "name": "The Soul Children", "sort-name": "Soul Children, The" }
+    ],
+    "date": "1978",
+    "id": "093bc287-e014-4b9e-8511-7a473b63d5b6",
+    "title": "Open Door Policy"
+  },
+  {
+    "artistDisplayName": "Katy Kirby",
+    "artists": [{ "id": "dab7e7de-ae6b-4f1c-a4a0-49293df7ce22", "name": "Katy Kirby", "sort-name": "Kirby, Katy" }],
+    "date": "2021-02-19",
+    "id": "5d643a51-6129-4688-b8b8-d852d10b341c",
+    "title": "Cool Dry Place",
+    "cover": {
+      "id": 28629389873,
+      "small": "http://coverartarchive.org/release/5d643a51-6129-4688-b8b8-d852d10b341c/28629389873-250.jpg",
+      "large": "http://coverartarchive.org/release/5d643a51-6129-4688-b8b8-d852d10b341c/28629389873-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "Anika Pyle",
+    "artists": [
+      {
+        "id": "083fdbf7-a38f-406d-9430-f3b985d8a992",
+        "name": "Anika Pyle",
+        "sort-name": "Pyle, Anika",
+        "disambiguation": "Singer of Chumped"
+      }
+    ],
+    "date": "2021-02-12",
+    "id": "aacfd5fb-b2a1-4753-9367-a6ffe61f02c1",
+    "title": "Wild River",
+    "cover": {
+      "id": 28615648129,
+      "small": "http://coverartarchive.org/release/aacfd5fb-b2a1-4753-9367-a6ffe61f02c1/28615648129-250.jpg",
+      "large": "http://coverartarchive.org/release/aacfd5fb-b2a1-4753-9367-a6ffe61f02c1/28615648129-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "slowthai",
+    "artists": [{ "id": "333e76b4-9606-4fd3-bcb3-8e7660bb4d96", "name": "slowthai", "sort-name": "slowthai" }],
+    "date": "2021-02-05",
+    "id": "be3f95e2-ad86-42a9-94e9-912b1d9e13f9",
+    "title": "TYRON"
+  },
+  {
+    "artistDisplayName": "The Staves",
+    "artists": [
+      {
+        "id": "0d659b57-7224-491d-a891-702d222c8826",
+        "name": "The Staves",
+        "sort-name": "Staves, The",
+        "disambiguation": "UK folk rock trio"
+      }
+    ],
+    "date": "2021-02-05",
+    "id": "189b840a-cbe7-4423-8ce8-668598cf7d36",
+    "title": "Good Woman",
+    "cover": {
+      "id": 28240872597,
+      "small": "http://coverartarchive.org/release/189b840a-cbe7-4423-8ce8-668598cf7d36/28240872597-250.jpg",
+      "large": "http://coverartarchive.org/release/189b840a-cbe7-4423-8ce8-668598cf7d36/28240872597-500.jpg"
+    }
+  },
+  {
+    "artistDisplayName": "The Weather Station",
+    "artists": [
+      {
+        "id": "eda7da10-0b65-41df-ac36-9c83b7017f7a",
+        "name": "The Weather Station",
+        "sort-name": "Weather Station, The"
+      }
+    ],
+    "id": "cc94b38e-03c1-4c34-9484-f7cc3912130f",
+    "title": "Ignorance"
+  }
+]
