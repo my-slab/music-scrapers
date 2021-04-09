@@ -1,126 +1,197 @@
-import fs from 'fs';
-import fetch from 'isomorphic-unfetch';
-import { Artist, Cover, Release, Releases } from './types';
-import { sleep } from './utils';
+import fetch from 'isomorphic-unfetch'
+import fs from 'fs'
+import {
+  Album,
+  Artist,
+  ArtistCreditResponse,
+  Cover,
+  Maybe,
+  Release,
+  ReleaseQueryResponse,
+  ReleaseResponse,
+} from './types'
+import { backOff } from 'exponential-backoff'
+import { distance } from './utils'
 
-const MUSIC_BRAINZ_URL = 'https://musicbrainz.org/ws/2/';
-const COVER_ARCHIVE_URL = 'https://coverartarchive.org/';
-
-async function fetchArtist(
-  artist: string
-): Promise<{ id: string; name: string }> {
-  let url = `${MUSIC_BRAINZ_URL}artist?query=${artist}`;
-
-  return fetch(url, { headers: { Accept: 'application/json' } })
-    .then((r) => r.json())
-    .then((r) => {
-      let { artists } = r;
-      let [{ id, name }] = artists;
-      return { id, name };
-    });
+/**
+ * coverArtArchive
+ *
+ * @see https://coverartarchive.org/
+ */
+const coverArtArchive = {
+  url: 'https://coverartarchive.org',
+  opts: { headers: { Accept: 'application/json' } },
+  async release({ id }: { id: string }) {
+    let url = `${this.url}/release/${id}`
+    return backOff(() => fetch(url, this.opts).then((r) => r.json()))
+  },
 }
 
-async function fetchRelease(
-  artistId: string,
-  title: string
-): Promise<{ type: 'release' | 'release-group'; id: string; title: string }> {
-  let releaseUrl = `${MUSIC_BRAINZ_URL}release?artist=${artistId}&status=official&type=album|ep`;
-  let releaseGroupUrl = `${MUSIC_BRAINZ_URL}release-group?artist=${artistId}&type=album|ep`;
-
-  async function _fetchRelease(
-    url: string,
-    kind: 'releases' | 'release-groups'
-  ) {
-    return fetch(url, {
-      headers: { Accept: 'application/json' },
-    })
-      .then((r) => r.json())
-      .then((r) => {
-        let { [kind]: releases } = r;
-        let id;
-        for (let release of releases) {
-          let {
-            title: _title,
-            id: _id,
-          }: { title: string; id: string } = release;
-          if (_title.toLowerCase().trim() == title.toLowerCase().trim()) {
-            id = _id;
-            return { id, title };
-          }
-        }
-      });
-  }
-
-  let release = await _fetchRelease(releaseUrl, 'releases');
-  let releaseGroup = await _fetchRelease(releaseGroupUrl, 'release-groups');
-  // @ts-ignore
-  return release
-    ? { type: 'release', ...release }
-    : { type: 'release-group', ...releaseGroup };
+/**
+ * musicBrainz
+ *
+ * @see https://musicbrainz.org/doc/MusicBrainz_API
+ */
+const musicBrainz = {
+  url: 'https://musicbrainz.org/ws/2',
+  opts: { headers: { Accept: 'application/json' } },
+  /**
+   * release
+   *
+   * Fetch a specific release entity by id.
+   *
+   * @example
+   * let release = await musicBrainz.release({id: '0690e824-9bbd-4b09-bf5d-673394ca5afe'})
+   *
+   */
+  async release({ id }: { id: string }): Promise<ReleaseResponse> {
+    let url = `${this.url}/release/${id}`
+    return backOff(() => fetch(url, this.opts).then((r) => r.json()))
+  },
+  async releaseQuery({ offset = 0, title }: { offset?: number; title: string }) {
+    let url = `${this.url}/release?query=${title}&status=official&type=${encodeURIComponent(
+      'album|ep'
+    )}&offset=${offset}`
+    return backOff(() => fetch(url, this.opts).then((r) => r.json()))
+  },
 }
 
-async function fetchCover(release: Omit<Release, 'cover'>) {
-  let url;
-  switch (release.type) {
-    case 'release':
-      url = `${COVER_ARCHIVE_URL}/release/${release.id}`;
-      break;
-    case 'release-group':
-      url = `${COVER_ARCHIVE_URL}/release-group/${release.id}`;
-      break;
+/**
+ * getArtistDisplayName
+ *
+ * Join together a release's artists according to the joinphrase property.
+ *
+ * @example
+ * getArtistDisplayName([{ name: 'Nick Cave', joinphrase: '&', ... }, { name: 'Warren Ellis', ... }])
+ * // 'Nick Cave & Warren Ellis'
+ */
+function getArtistDisplayName(artists: ArtistCreditResponse[]): string {
+  let displayName = ''
+  let artist: ArtistCreditResponse
+  for (artist of artists) {
+    displayName = displayName + artist.name + (artist.joinphrase || '')
   }
+  return displayName
+}
 
-  return fetch(url)
-    .then((r) => r.json())
-    .then((r) => {
-      let { images } = r;
+/**
+ * pickRelease
+ *
+ * Pick the properties from a `ReleaseQueryResponse` that are relevant.
+ *
+ * @example
+ * let release = pickRelease({ ... })
+ * let { artistDisplayName } = release
+ */
+function pickRelease(release: ReleaseQueryResponse): Release {
+  let { 'artist-credit': artists } = release
+  let { date, id, title } = release
+  let artistDisplayName = getArtistDisplayName(artists)
+  return { artistDisplayName, artists: artists.map(({ artist }: { artist: Artist }) => artist), date, id, title }
+}
+
+/**
+ * isArtistMatch
+ *
+ * Check if two artist name strings are similar.
+ *
+ * @example
+ * isArtistMatch('Charli XCX', 'Charlie XCX')
+ * // true
+ */
+function isArtistMatch(a: string, b: string): boolean {
+  return distance(a, b) >= 0.8
+}
+
+/**
+ * fetchRelease
+ *
+ * Find a release matching the given artist name and release title.
+ *
+ * @example
+ * fetchRelease({artist: 'Charli XCX', title: "how i'm feeling now"})
+ */
+async function fetchRelease({ artist, title }: { artist: string; title: string }): Promise<Maybe<Release>> {
+  let count = Infinity
+  let offset = 0
+
+  while (offset < count) {
+    let result = await musicBrainz.releaseQuery({ offset, title })
+    count = result.count
+
+    for (let r of result.releases) {
+      let release = pickRelease(r)
+      if (isArtistMatch(artist, release.artistDisplayName)) return release
+    }
+    offset = offset + 25
+  }
+}
+
+/**
+ * hasCoverArt
+ *
+ * Check if a release has cover art.
+ *
+ * @example
+ * hasCoverArt(release)
+ * // true
+ */
+function hasCoverArt(release: ReleaseResponse): boolean {
+  let { 'cover-art-archive': coverArtArchive } = release
+  let { front } = coverArtArchive
+
+  return front
+}
+
+/**
+ * fetchCover
+ *
+ * Fetch a release's cover art.
+ *
+ * @example
+ * let cover = await fetchCover({id: '0690e824-9bbd-4b09-bf5d-673394ca5afe'})
+ */
+async function fetchCover({ id }: { id: string }): Promise<Maybe<Cover>> {
+  let release = await musicBrainz.release({ id })
+  if (release && hasCoverArt(release)) {
+    let coverArt = await coverArtArchive.release({ id })
+
+    if (coverArt) {
+      let { images } = coverArt
       let [
         {
+          id: coverId,
           thumbnails: { small, large },
         },
-      ] = images;
+      ] = images
 
-      return { small, large };
-    });
+      return { id: coverId, small, large }
+    }
+  }
 }
 
 export async function lookup() {
-  let inPath = './data/raw';
-  let outPath = './data';
-  let filePaths = [
-    '/pitchfork/best-new-music.json',
-    '/stereogum/heavy-rotation.json',
-    '/stereogum/album-of-the-week.json',
-    '/the-needle-drop/loved-list.json',
-  ];
+  let inPath = './data/raw'
+  let outPath = './data'
+  let filePaths = ['/stereogum/heavy-rotation.json']
+  let releases: Release[] = []
 
   for (let filePath of filePaths) {
-    let file = fs.readFileSync(`${inPath}${filePath}`);
-    let data = JSON.parse(file.toString());
-    let entries: Releases[] = [];
-    console.log(`Lookup::${filePath}`);
+    console.log(`Lookup::${filePath}`)
+    let file = fs.readFileSync(`${inPath}${filePath}`)
+    let data = JSON.parse(file.toString())
 
-    for (let d of data) {
-      let { artist: a, title } = d;
-      console.log(`\t${a} - ${title}`);
+    for (let datum of data) {
+      let { artist, title }: Album = datum
+      console.log(`\t${artist} - ${title}`)
 
-      sleep(3);
-
-      try {
-        let artist: Artist = await fetchArtist(a);
-        let release: Omit<Release, 'cover'> = await fetchRelease(
-          artist.id,
-          title
-        );
-        let cover: Cover = await fetchCover(release);
-
-        entries.push({ ...artist, release: { ...release, cover } });
-      } catch (e) {
-        console.log(e);
-        console.log('🚨', `\tError::${a} - ${title}`, '🚨');
+      let partialRelease = await fetchRelease({ artist, title })
+      if (partialRelease) {
+        let cover = await fetchCover({ id: partialRelease.id })
+        releases.push({ ...partialRelease, cover })
       }
     }
 
-    fs.writeFileSync(`${outPath}${filePath}`, JSON.stringify(entries));
+    fs.writeFileSync(`${outPath}${filePath}`, JSON.stringify(releases))
   }
 }
