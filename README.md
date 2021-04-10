@@ -8,7 +8,7 @@
   <tbody>
     <tr>
       <td colspan="2">
-        Pitchfork
+        <strong>Pitchfork</strong>
       </td>
     </tr>
     <tr>
@@ -25,7 +25,7 @@
     </tr>
     <tr>
       <td colspan="2">
-        Stereogum
+        <strong>Stereogum</strong>
       </td>
     </tr>
     <tr>
@@ -42,7 +42,7 @@
     </tr>
     <tr>
       <td colspan="2">
-        The Needle Drop
+        <strong>The Needle Drop</strong>
       </td>
     </tr>
     <tr>
