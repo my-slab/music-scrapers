@@ -1,10 +1,6 @@
 ### Lists
 
 <table>
-  <thead>
-    <th>List</th>
-    <th>URL</th>
-  </thead>
   <tbody>
     <tr>
       <td colspan="2">
