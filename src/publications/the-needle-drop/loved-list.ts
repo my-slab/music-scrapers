@@ -1,29 +1,26 @@
-import { Album, List } from '../../types'
-import { Page } from 'puppeteer'
-import { save } from '../../utils'
+import { Album, List } from '../../../types';
+import { Page } from 'puppeteer';
 
-const PATH = './data/raw/the-needle-drop/loved-list.json'
-const URL = 'https://www.theneedledrop.com/loved-list'
+export const lovedList: List = {
+  URL: 'https://www.theneedledrop.com/loved-list',
+  name: 'Loved List',
+  save: () => {},
+  scrape,
+};
 
 async function scrape(page: Page): Promise<Album[]> {
   return page.evaluate(() => {
-    const SELECTOR = 'p:first-child strong + a'
+    const SELECTOR = '.article-card__title a';
 
-    let albums: Album[] = []
-    for (let { innerHTML } of document.querySelectorAll(SELECTOR)) {
-      let [artist, title] = innerHTML.split('-')
+    let albums: Album[] = [];
+    for (let element of document.querySelectorAll(SELECTOR)) {
+      let [artist, title] = (element as HTMLElement).innerText.split('-');
       albums.push({
         artist: artist,
         title: title,
-      })
+      });
     }
 
-    return albums
-  })
-}
-
-export const lovedList: List = {
-  URL,
-  save: save(PATH),
-  scrape,
+    return albums;
+  });
 }
