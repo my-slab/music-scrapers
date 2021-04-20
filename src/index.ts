@@ -1,5 +1,4 @@
 import * as publications from './publications'
-import process from 'process'
 import { List } from './types'
 import { cleanAlbums, goto, launch, teardown } from './utils'
 
