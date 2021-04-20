@@ -1,4 +1,5 @@
 import fs from 'fs'
+import { Albums } from '../types'
 
 /**
  * read
@@ -8,7 +9,7 @@ import fs from 'fs'
  * @example
  * let data = read('./albums.json')
  */
-export function read(path: string) {
+export function read(path: string): Albums {
   try {
     let file = fs.readFileSync(path)
     return JSON.parse(file.toString())
@@ -25,6 +26,6 @@ export function read(path: string) {
  * @example
  * write('./albums.json', "[]")
  */
-export function write(path: string, data: string) {
+export function write(path: string, data: string): void {
   fs.writeFileSync(path, data)
 }

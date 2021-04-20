@@ -41,6 +41,6 @@ export async function goto(browser: Browser, url: string): Promise<Page> {
  * @example
  * await teardown(browser)
  */
-export async function teardown(browser: Browser) {
-  browser.close()
+export async function teardown(browser: Browser): Promise<void> {
+  return browser.close()
 }
