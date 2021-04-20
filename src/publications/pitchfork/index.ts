@@ -1,5 +1,5 @@
-import { bestNewMusic } from './best-new-music'
+import { bestNewAlbums } from './best-new-albums'
 
 export let pitchfork = {
-  bestNewMusic,
+  bestNewAlbums,
 }

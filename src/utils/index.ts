@@ -1,5 +1,3 @@
 export { cleanAlbums, save } from './data'
-export { distance, normalize } from './strings'
 export { goto, launch, teardown } from './browser'
 export { read, write } from './file'
-export { sleep } from './system'

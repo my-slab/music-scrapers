@@ -5,8 +5,11 @@ export interface Album {
   title: string
 }
 
+export type Albums = Album[]
+
 export interface List {
   URL: string
-  save: (albums: Album[]) => void
-  scrape: (page: Page) => Promise<Album[]>
+  name: string
+  save: (albums: Albums) => void
+  scrape: (page: Page) => Promise<Albums>
 }

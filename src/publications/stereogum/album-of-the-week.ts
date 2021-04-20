@@ -1,30 +1,27 @@
-import { Album, List } from '../../types';
-import { Page } from 'puppeteer';
+import { Albums, List } from '../../types'
+import { Page } from 'puppeteer'
 
 export const albumOfTheWeek: List = {
   URL: 'https://www.stereogum.com/category/reviews/album-of-the-week/',
   name: 'Album Of The Week',
   save: () => {},
   scrape,
-};
+}
 
-async function scrape(page: Page): Promise<Album[]> {
+async function scrape(page: Page): Promise<Albums> {
   return page.evaluate(() => {
-    const SELECTOR = '.article-card__title a';
+    const SELECTOR = '.article-card__title a'
 
-    let albums: Album[] = [];
+    let albums: Albums = []
     for (let { childNodes } of document.querySelectorAll(SELECTOR)) {
-      let [artist, title] = [
-        childNodes[0] as ChildNode,
-        childNodes[1] as HTMLElement,
-      ];
+      let [artist, title] = [childNodes[0] as ChildNode, childNodes[1] as HTMLElement]
 
       albums.push({
         artist: (artist.textContent || '').split('Album Of The Week:')[1],
         title: title.innerText,
-      });
+      })
     }
 
-    return albums;
-  });
+    return albums
+  })
 }

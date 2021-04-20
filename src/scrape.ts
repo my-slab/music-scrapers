@@ -18,12 +18,12 @@ async function task(list: List) {
 }
 
 export async function scrape() {
-  let p: keyof typeof publications
-  for (p in publications) {
-    let publication = publications[p]
-    for (let l in publication) {
-      let list = (<any>publication)[l]
-      await task(list)
-    }
-  }
+  return Promise.all(
+    [
+      publications.pitchfork.bestNewAlbums,
+      publications.stereogum.albumOfTheWeek,
+      publications.stereogum.heavyRotation,
+      publications.theNeedleDrop.lovedList,
+    ].map(task)
+  )
 }
