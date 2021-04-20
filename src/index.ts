@@ -4,7 +4,7 @@ import { List } from './types'
 import { cleanAlbums, goto, launch, teardown } from './utils'
 
 async function scrape(list: List) {
-  console.log('Fetching::', list.URL)
+  console.log('🕷 Fetching::', list.URL)
 
   try {
     let browser = await launch()
@@ -13,22 +13,19 @@ async function scrape(list: List) {
     albums = cleanAlbums(albums)
     list.save(albums)
     await teardown(browser)
+    console.log('✅ Done::', list.URL)
   } catch (e) {
     console.log(e)
   }
 }
 
 ;(async () => {
-  try {
-    await Promise.all(
-      [
-        publications.pitchfork.bestNewAlbums,
-        publications.stereogum.albumOfTheWeek,
-        publications.stereogum.heavyRotation,
-        publications.theNeedleDrop.lovedList,
-      ].map(scrape)
-    )
-  } finally {
-    process.exit()
-  }
+  await Promise.all(
+    [
+      publications.pitchfork.bestNewAlbums,
+      publications.stereogum.albumOfTheWeek,
+      publications.stereogum.heavyRotation,
+      publications.theNeedleDrop.lovedList,
+    ].map(scrape)
+  )
 })()
