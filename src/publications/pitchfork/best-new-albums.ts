@@ -1,10 +1,11 @@
 import { Albums, List } from '../../types'
 import { Page } from 'puppeteer'
+import { save } from '../../utils'
 
 export const bestNewAlbums: List = {
   URL: 'https://pitchfork.com/reviews/best/albums',
   name: 'Best New Albums',
-  save: () => {},
+  save: save('./data/pitchfork/best-new-albums.json'),
   scrape,
 }
 

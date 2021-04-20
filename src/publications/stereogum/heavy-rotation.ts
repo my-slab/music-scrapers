@@ -1,10 +1,11 @@
 import { Albums, List } from '../../types'
 import { Page } from 'puppeteer'
+import { save } from '../../utils'
 
 export const heavyRotation: List = {
   URL: 'https://www.stereogum.com/heavy-rotation',
   name: 'Heavy Rotation',
-  save: () => {},
+  save: save('./data/stereogum/heavy-rotation.json'),
   scrape,
 }
 

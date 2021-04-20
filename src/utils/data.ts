@@ -1,7 +1,5 @@
-import unescape from 'lodash/unescape'
-import isEqual from 'lodash/isEqual'
-import uniqWith from 'lodash/uniqWith'
-import { Album } from '../types'
+import { Albums } from '../types'
+import { isEqual, unescape, uniqWith } from 'lodash'
 import { read, write } from './file'
 
 /**
@@ -13,7 +11,7 @@ import { read, write } from './file'
  * cleanAlbums([{artist: "Charli XCX", title: "how i’m feeling now"}])
  * // [{artist: "Charli XCX", title: "how i'm feeling now"}]
  */
-export function cleanAlbums(albums: Album[]) {
+export function cleanAlbums(albums: Albums) {
   function cleanText(text: string) {
     text = text.trim()
     text = unescape(text)
@@ -21,7 +19,7 @@ export function cleanAlbums(albums: Album[]) {
     return text
   }
 
-  let cleanedAlbums: Album[] = []
+  let cleanedAlbums: Albums = []
   albums.map((album) => {
     let artist = album.artist
     let title = album.title
@@ -43,7 +41,7 @@ export function cleanAlbums(albums: Album[]) {
  * saveList([{artist: "Charli XCX", title: "how i'm feeling now"}])
  */
 export function save(path: string) {
-  return function (albums: Album[]) {
+  return function (albums: Albums) {
     let data = read(path)
     data = JSON.stringify(uniqWith([...albums, ...data], isEqual))
     write(path, data)
