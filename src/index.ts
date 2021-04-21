@@ -13,12 +13,12 @@ async function scrape(list: List) {
     list.save(albums)
     await teardown(browser)
     console.log('✅ Done::', list.URL)
-  } catch (e) {
-    console.log(e)
+  } catch {
+    console.log('🚨 Error::, list.URL')
   }
 }
 
-(async () => {
+;(async () => {
   await Promise.all(
     [
       publications.pitchfork.bestNewAlbums,

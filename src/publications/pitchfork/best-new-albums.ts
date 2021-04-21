@@ -20,24 +20,14 @@ async function scrape(page: Page): Promise<Albums> {
       // Pitchfork will group multiple releases with a slash
       // e.g. Adrianne Lenker - songs/instrumentals
       let titles = title.innerText.split('/')
-      if (titles.length > 1) {
-        for (let t of titles) albums.push({ artist: artist.innerText, title: t })
-      } else {
+      if (titles.length > 1) for (let t of titles) albums.push({ artist: artist.innerText, title: t })
+      else {
         // Pitchfork will group multiple artists in <li> elements.
         if (artist.children.length > 1) {
           let artists = ''
           for (let c of artist.children) artists = artists + ' ' + (c as HTMLElement).innerText
-
-          albums.push({
-            artist: artists,
-            title: title.innerText,
-          })
-        } else {
-          albums.push({
-            artist: artist.innerText,
-            title: title.innerText,
-          })
-        }
+          albums.push({ artist: artists, title: title.innerText })
+        } else albums.push({ artist: artist.innerText, title: title.innerText })
       }
     }
 
