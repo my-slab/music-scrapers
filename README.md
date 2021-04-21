@@ -4,6 +4,17 @@
   <tbody>
     <tr>
       <td colspan="2">
+        <strong>Bleep</strong>
+      </td>
+    </tr>
+    <tr>
+      <td>Album Of The Week</td>
+      <td>
+        https://bleep.com/stream/album-of-the-week
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
         <strong>Pitchfork</strong>
       </td>
     </tr>
@@ -49,7 +60,3 @@
     </tr>
   </tbody>
 </table>
-
-
-TODO
-indie shuffle, sonicstate, Bleep, reddit indie heads, reddit hiphopheads
