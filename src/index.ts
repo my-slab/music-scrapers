@@ -18,7 +18,7 @@ async function scrape(list: List) {
   }
 }
 
-;(async () => {
+(async () => {
   await Promise.all(
     [
       publications.pitchfork.bestNewAlbums,
