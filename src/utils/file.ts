@@ -10,12 +10,12 @@ import { Albums } from '../types'
  * let data = read('./albums.json')
  */
 export function read(path: string): Albums {
-  try {
-    let file = fs.readFileSync(path)
-    return JSON.parse(file.toString())
-  } catch (error) {
-    return []
-  }
+	try {
+		let file = fs.readFileSync(path)
+		return JSON.parse(file.toString())
+	} catch (error) {
+		return []
+	}
 }
 
 /**
@@ -27,5 +27,5 @@ export function read(path: string): Albums {
  * write('./albums.json', "[]")
  */
 export function write(path: string, data: string): void {
-  fs.writeFileSync(path, data)
+	fs.writeFileSync(path, data)
 }
