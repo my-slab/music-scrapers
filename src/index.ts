@@ -14,7 +14,7 @@ async function scrape(list: List) {
     await teardown(browser)
     console.log('✅ Done::', list.URL)
   } catch {
-    console.log('🚨 Error::, list.URL')
+    console.log('🚨 Error::', list.URL)
   }
 }
 
