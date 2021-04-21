@@ -22,6 +22,7 @@ async function scrape(list: List) {
   await Promise.all(
     [
       publications.pitchfork.bestNewAlbums,
+      publications.pitchfork.highScoringAlbums,
       publications.stereogum.albumOfTheWeek,
       publications.stereogum.heavyRotation,
       publications.theNeedleDrop.lovedList,
