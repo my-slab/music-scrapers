@@ -11,7 +11,7 @@ export const lovedList: List = {
 
 async function scrape(page: Page): Promise<Albums> {
 	return page.evaluate(() => {
-		const SELECTOR = '.article-card__title a'
+		const SELECTOR = 'div p:first-child a'
 
 		let albums: Albums = []
 		for (let element of document.querySelectorAll(SELECTOR)) {
