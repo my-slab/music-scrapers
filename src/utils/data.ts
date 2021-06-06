@@ -20,14 +20,13 @@ export function cleanAlbums(albums: Albums): Albums {
 	}
 
 	let cleanedAlbums: Albums = []
-	albums.map((album) => {
+	for (let album of albums) {
 		let artist = album.artist
 		let title = album.title
 		artist = cleanText(artist)
 		title = cleanText(title)
 		cleanedAlbums.push({ artist, title })
-	})
-
+	}
 	return cleanedAlbums
 }
 
