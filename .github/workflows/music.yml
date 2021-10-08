@@ -31,5 +31,5 @@ jobs:
           push-branch: main
           name: my-slab
           email: mitch.stewart@hey.com
-          commit-message: 'chore: Build data'
+          commit-message: 'chore: update data'
           rebase: 'true'
