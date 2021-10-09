@@ -30,6 +30,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           push-branch: main
           name: my-slab
-          email: mitch.stewart@hey.com
+          email: ${{ secrets.EMAIL }}
           commit-message: 'chore: update data'
           rebase: 'true'
