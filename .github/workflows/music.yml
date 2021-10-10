@@ -12,7 +12,7 @@ on:
 
 jobs:
   scrape:
-    name: Run yarn start
+    name: Scrape data
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
