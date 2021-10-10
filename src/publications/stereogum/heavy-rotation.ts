@@ -16,6 +16,9 @@ async function scrape(page: Page): Promise<Albums> {
 		let albums: Albums = []
 		for (let element of document.querySelectorAll(SELECTOR)) {
 			let [artist, title] = (element as HTMLElement).innerText.split('-')
+
+			if (!title) continue
+
 			albums.push({
 				artist: artist,
 				title: title,
