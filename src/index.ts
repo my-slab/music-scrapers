@@ -4,17 +4,19 @@ import { cleanAlbums, goto, launch, teardown } from './utils'
 
 async function scrape(list: List) {
 	console.log('🕷 Fetching::', list.URL)
+	let browser = await launch()
 
 	try {
-		let browser = await launch()
 		let page = await goto(browser, list.URL)
 		let albums = await list.scrape(page)
 		albums = cleanAlbums(albums)
 		list.save(albums)
-		await teardown(browser)
 		console.log('✅ Done::', list.URL)
-	} catch {
-		console.log('🚨 Error::', list.URL)
+	} catch (error) {
+		console.log('🚨 Error:: ${list.URL}', list.URL)
+		console.log((error as Error)?.message)
+	} finally {
+		await teardown(browser)
 	}
 }
 
