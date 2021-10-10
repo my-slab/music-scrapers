@@ -2,9 +2,9 @@ import puppeteer, { Browser, Page } from 'puppeteer'
 import { backOff } from 'exponential-backoff'
 
 /**
- * launch
+ * @name launch
  *
- * Create a browser instance.
+ * @description Create a browser instance.
  *
  * @see https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#puppeteerlaunchoptions
  *
@@ -16,9 +16,9 @@ export async function launch(): Promise<Browser> {
 }
 
 /**
- * goto
+ * @name goto
  *
- * Create a new page and navigate it
+ * @description Create a new page and navigate it
  *
  * @see https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagegotourl-options
  *
@@ -32,9 +32,9 @@ export async function goto(browser: Browser, url: string): Promise<Page> {
 }
 
 /**
- * teardown
+ * @name teardown
  *
- * Close the browser and pages.
+ * @description Close the browser and pages.
  *
  * @see https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#browserclose
  *
@@ -43,4 +43,18 @@ export async function goto(browser: Browser, url: string): Promise<Page> {
  */
 export async function teardown(browser: Browser): Promise<void> {
 	return browser.close()
+}
+
+/**
+ * @name waitFor
+ *
+ * @description Timeout for long page evalutations.
+ *
+ * @see https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagewaitforselectororfunctionortimeout-options-args
+ *
+ * @example
+ * await waitFor(page, 5000, new Promise(() => {}))
+ */
+export async function waitFor<T>(page: Page, timeout = 5000, fn: Promise<T>): Promise<T | void> {
+	return Promise.race([fn, page.waitFor(timeout)])
 }
