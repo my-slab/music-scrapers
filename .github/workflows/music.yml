@@ -42,11 +42,8 @@ jobs:
         run: yarn run start --if-present
 
       - name: Push data
-        uses: github-actions-x/commit@v2.7
+        uses: EndBug/add-and-commit@v7
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          push-branch: main
-          name: my-slab
-          email: mitch.stewart@hey.com
-          commit-message: 'chore: update data'
-          rebase: 'true'
+          author_name: my-slab
+          author_email: mitch.stewart@hey.com
+          message: 'chore: update data'
