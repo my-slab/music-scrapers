@@ -10,9 +10,8 @@ async function scrape(list: List) {
 		let page = await goto(browser, list.URL)
 		let albums = await waitFor(page, 5000, list.scrape(page))
 		if (!albums) throw new Error('Timeout')
-
 		albums = cleanAlbums(albums)
-		list.save(albums)
+		await list.save(albums)
 		console.log('✅ Done::', list.URL)
 	} catch (error) {
 		console.log('🚨 Error::', list.URL)

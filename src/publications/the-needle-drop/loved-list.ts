@@ -1,11 +1,12 @@
-import { Albums, List } from '../../types'
 import { Page } from 'puppeteer'
+
+import { Albums, List } from '../../types'
 import { save } from '../../utils'
 
 export const lovedList: List = {
 	URL: 'https://www.theneedledrop.com/loved-list',
 	name: 'Loved List',
-	save: save('./data/the-needle-drop/loved-list.json'),
+	save: save('./data/the-needle-drop/loved-list.csv'),
 	scrape,
 }
 

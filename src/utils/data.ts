@@ -1,11 +1,12 @@
-import { Albums } from '../types'
 import { isEqual, unescape, uniqWith } from 'lodash'
+
+import { Albums } from '../types'
 import { read, write } from './file'
 
 /**
- * cleanAlbums
+ * @name cleanAlbums
  *
- * Normalize scraped text.
+ * @description Normalize scraped text.
  *
  * @example
  * cleanAlbums([{artist: "Charli XCX", title: "how i’m feeling now"}])
@@ -31,18 +32,18 @@ export function cleanAlbums(albums: Albums): Albums {
 }
 
 /**
- * save
+ * @name save
  *
- * Save a list to file
+ * @description Save a list to file
  *
  * @example
  * let saveList = save('./here.json')
  * saveList([{artist: "Charli XCX", title: "how i'm feeling now"}])
  */
-export function save(path: string) {
-	return function (albums: Albums): void {
-		let savedAlbums = read(path)
-		let data = JSON.stringify(uniqWith([...albums, ...savedAlbums], isEqual))
-		write(path, data)
+export function save(path: string): (albums: Albums) => Promise<void> {
+	return async function (albums: Albums): Promise<void> {
+		let savedAlbums = await read(path)
+		let data = uniqWith([...albums, ...savedAlbums], isEqual)
+		write(path, data as Albums)
 	}
 }

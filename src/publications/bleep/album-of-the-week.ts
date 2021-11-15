@@ -1,11 +1,12 @@
-import { Albums, List } from '../../types'
 import { Page } from 'puppeteer'
+
+import { Albums, List } from '../../types'
 import { save } from '../../utils'
 
 export const albumOfTheWeek: List = {
 	URL: 'https://bleep.com/stream/album-of-the-week',
 	name: 'Album Of The Week',
-	save: save('./data/bleep/album-of-the-week.json'),
+	save: save('./data/bleep/album-of-the-week.csv'),
 	scrape,
 }
 
