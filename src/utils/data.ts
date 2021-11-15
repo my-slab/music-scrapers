@@ -43,7 +43,7 @@ export function cleanAlbums(albums: Albums): Albums {
 export function save(path: string): (albums: Albums) => Promise<void> {
 	return async function (albums: Albums): Promise<void> {
 		let savedAlbums = await read(path)
-		let data = uniqWith([['artist', 'title'], ...albums, ...savedAlbums], isEqual)
-		write(path, data as Albums)
+		let data = uniqWith([...albums, ...savedAlbums], isEqual)
+		write(path, [['artist', 'title'], ...data] as Albums)
 	}
 }
