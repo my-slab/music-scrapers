@@ -42,7 +42,7 @@ jobs:
         run: yarn run start --if-present
 
       - name: Push data
-        uses: EndBug/add-and-commit@v7
+        uses: EndBug/add-and-commit@v9
         with:
           author_name: my-slab
           author_email: mitch.stewart@hey.com
